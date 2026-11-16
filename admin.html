@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Foundation Admin · Laxit Welfare Foundation</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header><div class="nav">
+    <div class="logo"><span class="mk">L</span><span>Laxit Welfare Foundation<small>EVENTS &amp; REGISTRATIONS</small></span></div>
+    <div class="l"><a href="index.html">View website</a></div>
+  </div></header>
+  <main class="w admin-page">
+    <section id="login-section">
+      <div class="sh"><div class="eb">Admin</div><h1>Sign in</h1></div>
+      <p class="mu">Foundation administrators only.</p>
+      <form id="login-form" class="card admin-form">
+        <label for="login-email">Email</label><input id="login-email" type="email" autocomplete="username" required>
+        <label for="login-password">Password</label><input id="login-password" type="password" autocomplete="current-password" required>
+        <button class="btn" type="submit">Sign in</button>
+      </form>
+    </section>
+    <section id="dashboard" hidden>
+      <div class="row admin-toolbar"><div><div class="eb">Dashboard</div><h1>Events &amp; registrations</h1></div><button id="logout-button" class="btn o" type="button">Sign out</button></div>
+      <p id="admin-message" role="status" aria-live="polite"></p>
+      <div class="sh"><h2 id="event-form-heading">Create an event</h2></div>
+      <form id="event-form" class="card admin-form">
+        <input id="event-id" type="hidden">
+        <label for="event-title">Event title *</label><input id="event-title" maxlength="160" required>
+        <div class="row">
+          <div><label for="event-date">Date *</label><input id="event-date" type="date" required></div>
+          <div><label for="event-time">Time</label><input id="event-time" maxlength="80"></div>
+        </div>
+        <div class="row">
+          <div><label for="event-category">Category *</label><input id="event-category" maxlength="80" required></div>
+          <div id="event-fee-field"><label for="event-fee">Fee (₹) *</label><input id="event-fee" type="number" min="0" step="0.01" value="0" required></div>
+        </div>
+        <label for="event-venue">Venue *</label><input id="event-venue" maxlength="200" required>
+        <label for="event-description">Description *</label><textarea id="event-description" rows="3" maxlength="3000" required></textarea>
+        <label class="admin-check"><input id="event-open" type="checkbox" checked> Accept registrations</label>
+        <label class="admin-check"><input id="event-published" type="checkbox" checked> Publish on the website</label>
+        <div class="row"><button id="save-event" class="btn" type="submit">Create event</button><button id="cancel-edit" class="btn o" type="button" hidden>Cancel edit</button></div>
+      </form>
+      <div class="sh"><h2>Manage events</h2></div>
+      <div id="events-list"></div>
+      <div class="sh"><h2>Registrations</h2></div>
+      <div class="sc"><table class="tb admin-table">
+        <thead><tr><th>Registered</th><th>Event</th><th>Reference</th><th>Name</th><th>Phone</th><th>Email</th><th>Age</th><th>City</th><th id="payment-reference-heading">Payment reference</th><th>Note</th></tr></thead>
+        <tbody id="registrations-list"></tbody>
+      </table></div>
+    </section>
+    <p id="login-message" role="status" aria-live="polite"></p>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
